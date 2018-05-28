@@ -29,6 +29,9 @@ public class CheckOut_Action {
      		// To achieve this, I have initialized this variable of Base class at the start of my test with value true in it
      		// At the end of my test, i will match the value, if it will be false then I will fail the test, else the test will be pass
      		BaseClass.bResult=false;
+     		
+     		
+     		
      	}
      	
      	CheckOut_Page.sProductPrice= CheckOut_Page.txt_ProductPrice().getText();
