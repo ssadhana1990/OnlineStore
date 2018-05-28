@@ -16,7 +16,7 @@ public class CheckOut_Action {
 		// CheckOut_Page.sProductName is a static variable and can be used anywhere with its class name
 		// Once some text is stored in this variable can be used later in any other class 
      	CheckOut_Page.sProductName=CheckOut_Page.txt_ProductName().getText();
-     	
+     	String s1;
      	// This is all about Verification checks, these does not stop your execution but simply report fail at the end
      	// This is to check that if the value in the variable sProductName is not null, then do this
      	if(!"".equals(CheckOut_Page.sProductName)){
