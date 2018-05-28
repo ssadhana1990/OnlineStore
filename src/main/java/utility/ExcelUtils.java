@@ -1,14 +1,12 @@
 package utility;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
 
 public class ExcelUtils {
 	private static XSSFSheet ExcelWSheet;
@@ -20,20 +18,17 @@ public class ExcelUtils {
 	// Path and Sheetname as Arguments to this method
 	public static void setExcelFile(String Path, String SheetName) throws Exception {
 		try {
-			File file = new File(Path);
-
-			if (file.isFile() && file.exists()) {
-
-				// Open the Excel file
-				FileInputStream fis = new FileInputStream(Path);
-				
-				// Access the required test data sheet
-				ExcelWBook = new XSSFWorkbook(fis);
-				ExcelWSheet = ExcelWBook.getSheet(SheetName);
-				// Log.info("Excel sheet opened");
-			}
+			// Open the Excel file
+			//FileInputStream ExcelFile = new FileInputStream(Path);
+			
+			OPCPackage pkg = OPCPackage.open(Path);
+			
+			// Access the required test data sheet
+			ExcelWBook = new XSSFWorkbook(pkg);
+			ExcelWSheet = ExcelWBook.getSheet(SheetName);
+			Log.info("Excel sheet opened");
 		} catch (Exception e) {
-			System.err.println(e);
+			e.printStackTrace();
 			throw (e);
 		}
 	}
@@ -56,7 +51,7 @@ public class ExcelUtils {
 	public static void setCellData(String Result, int RowNum, int ColNum) throws Exception {
 		try {
 			Row = ExcelWSheet.getRow(RowNum);
-			Cell = Row.getCell(ColNum, MissingCellPolicy.RETURN_BLANK_AS_NULL);
+			Cell = Row.getCell(ColNum, Row.RETURN_BLANK_AS_NULL);
 			if (Cell == null) {
 				Cell = Row.createCell(ColNum);
 				Cell.setCellValue(Result);

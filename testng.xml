@@ -8,7 +8,7 @@
 		<classes>
        		<!-- 	-->
        			<class name="testCases.Framework_001" />
-       			<class name="testCases.Framework_002" />
+       			<class name="testCases.Framework_002" />				  
 		</classes>
   	</test> <!-- Test -->
 </suite> <!-- Suite -->
