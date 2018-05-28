@@ -16,7 +16,7 @@ public class CheckOut_Action {
 		// CheckOut_Page.sProductName is a static variable and can be used anywhere with its class name
 		// Once some text is stored in this variable can be used later in any other class 
      	CheckOut_Page.sProductName=CheckOut_Page.txt_ProductName().getText();
-     	
+     	String s1;
      	// This is all about Verification checks, these does not stop your execution but simply report fail at the end
      	// This is to check that if the value in the variable sProductName is not null, then do this
      	if(!"".equals(CheckOut_Page.sProductName)){
@@ -29,6 +29,9 @@ public class CheckOut_Action {
      		// To achieve this, I have initialized this variable of Base class at the start of my test with value true in it
      		// At the end of my test, i will match the value, if it will be false then I will fail the test, else the test will be pass
      		BaseClass.bResult=false;
+     		
+     		
+     		
      	}
      	
      	CheckOut_Page.sProductPrice= CheckOut_Page.txt_ProductPrice().getText();
